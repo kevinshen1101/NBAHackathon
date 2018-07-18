@@ -20,4 +20,5 @@ if __name__ == "__main__":
     #print(game_sample)
     #print(play_by_play)
     plus_minuses = dict()
+    print("Test")
 
