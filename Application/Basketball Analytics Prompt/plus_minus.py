@@ -12,8 +12,13 @@ def process_file(file_name):
     return pd.DataFrame(data, columns=columns)
 
 if __name__ == "__main__":
-    event_cache = process_file("event_codes.txt")
+    event_codes = process_file("event_codes.txt")
     game_sample = process_file("game_sample.txt")
     play_by_play = process_file("play_by_play.txt")
-    print(play_by_play)
+    event_cache = event_codes.set_index(['Event_Msg_Type', 'Action_Type']).to_dict(orient='index')
+    sorted_pbp = play_by_play.sort_values(['Game_id', 'Period', 'PC_Time', 'WC_Time', 'Event_Num'], ascending = [True, True, False, True, True])
+    print(sorted_pbp)
+    #print(game_sample)
+    #print(play_by_play)
+    plus_minuses = dict()
 
